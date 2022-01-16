@@ -6,8 +6,10 @@ export default function TodoListContext({ children }) {
   const [count, setCount] = useState(0);
   const [state, setState] = useState([]);
 
-  const handleDelete = (e) => {
-    console.log('deleting');
+  const handleDelete = (id) => {
+    const newTodos = state.filter((item) => item.id !== id);
+    setState(newTodos);
+    localStorage.setItem('todos', JSON.stringify(newTodos));
   };
 
   useEffect(() => {

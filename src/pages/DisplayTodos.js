@@ -14,7 +14,7 @@ export default function DisplayTodos() {
               <span style={{ marginRight: 20 }}>
                 {index + 1} {item.title}
               </span>
-              <button onClick={handleDelete}>delete</button>
+              <button onClick={() => handleDelete(item.id)}>delete</button>
             </div>
           </>
         ))}
