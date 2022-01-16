@@ -2,22 +2,21 @@ import React, { useContext } from 'react';
 import { TriggerFunction } from '../context';
 
 export default function DisplayTodos() {
-  const { state, handleDelete, setShowModal, showModal } = useContext(TriggerFunction);
+  const { state, handleDelete, setShowModal, showModal, setEditInfo } = useContext(TriggerFunction);
   console.log(state);
 
-  const toggleModal = () => {
+  const handleEdit = (id) => {
     setShowModal(!showModal);
+    setEditInfo(id);
   };
 
   return (
     <div>
       {state.length > 0 &&
-        state.map((item, index) => (
+        state.map((item) => (
           <div key={item.id}>
-            <span style={{ marginRight: 20 }}>
-              {index + 1} {item.title}
-            </span>
-            <button onClick={() => toggleModal(item.id)}>Edit</button>
+            <span style={{ marginRight: 20 }}>{item.title}</span>
+            <button onClick={() => handleEdit(item.id)}>Edit</button>
             <button onClick={() => handleDelete(item.id)}>delete</button>
           </div>
         ))}

@@ -6,6 +6,7 @@ export default function TodoListContext({ children }) {
   const [count, setCount] = useState(0);
   const [state, setState] = useState([]);
   const [showModal, setShowModal] = useState(false);
+  const [editInfo, setEditInfo] = useState(null);
 
   const handleDelete = (id) => {
     const newTodos = state.filter((item) => item.id !== id);
@@ -13,9 +14,13 @@ export default function TodoListContext({ children }) {
     localStorage.setItem('todos', JSON.stringify(newTodos));
   };
 
-  const editTodo = (e) => {
+  const editTodo = (e, newTitle) => {
     e.preventDefault();
-    console.log('we editing boys');
+    const todos = state.map((todo) => {
+      return todo.id === editInfo ? { ...todo, title: newTitle } : todo;
+    });
+    localStorage.setItem('todos', JSON.stringify(todos));
+    setState(todos);
   };
 
   useEffect(() => {
@@ -35,7 +40,18 @@ export default function TodoListContext({ children }) {
 
   return (
     <TriggerFunction.Provider
-      value={{ count, state, setState, setCount, handleDelete, setShowModal, showModal, editTodo }}
+      value={{
+        count,
+        state,
+        setState,
+        setCount,
+        handleDelete,
+        setShowModal,
+        showModal,
+        editTodo,
+        editInfo,
+        setEditInfo,
+      }}
     >
       {children}
     </TriggerFunction.Provider>
