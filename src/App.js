@@ -1,16 +1,19 @@
+import { useContext } from 'react';
 import './App.css';
 import AddTodo from './pages/AddTodo';
 import DisplayTodos from './pages/DisplayTodos';
-import TodoListContext from './context/index';
+import { TriggerFunction } from './context/index';
+import Modal from './pages/Modal';
 
 function App() {
+  const { showModal } = useContext(TriggerFunction);
+
   return (
-    <TodoListContext>
-      <div className='App'>
-        <AddTodo />
-        <DisplayTodos />
-      </div>
-    </TodoListContext>
+    <div className='App'>
+      <AddTodo />
+      <DisplayTodos />
+      {showModal && <Modal />}
+    </div>
   );
 }
 

@@ -5,6 +5,7 @@ export const TriggerFunction = createContext(null);
 export default function TodoListContext({ children }) {
   const [count, setCount] = useState(0);
   const [state, setState] = useState([]);
+  const [showModal, setShowModal] = useState(false);
 
   const handleDelete = (id) => {
     const newTodos = state.filter((item) => item.id !== id);
@@ -28,7 +29,9 @@ export default function TodoListContext({ children }) {
   }, []);
 
   return (
-    <TriggerFunction.Provider value={{ count, state, setState, setCount, handleDelete }}>
+    <TriggerFunction.Provider
+      value={{ count, state, setState, setCount, handleDelete, setShowModal, showModal }}
+    >
       {children}
     </TriggerFunction.Provider>
   );
