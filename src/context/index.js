@@ -13,6 +13,11 @@ export default function TodoListContext({ children }) {
     localStorage.setItem('todos', JSON.stringify(newTodos));
   };
 
+  const editTodo = (e) => {
+    e.preventDefault();
+    console.log('we editing boys');
+  };
+
   useEffect(() => {
     console.log('context was rerendered');
     console.log(state.length);
@@ -30,7 +35,7 @@ export default function TodoListContext({ children }) {
 
   return (
     <TriggerFunction.Provider
-      value={{ count, state, setState, setCount, handleDelete, setShowModal, showModal }}
+      value={{ count, state, setState, setCount, handleDelete, setShowModal, showModal, editTodo }}
     >
       {children}
     </TriggerFunction.Provider>

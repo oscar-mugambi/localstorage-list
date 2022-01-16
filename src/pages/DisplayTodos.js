@@ -7,7 +7,6 @@ export default function DisplayTodos() {
 
   const toggleModal = () => {
     setShowModal(!showModal);
-    console.log('toggling modal');
   };
 
   return (
@@ -18,7 +17,7 @@ export default function DisplayTodos() {
             <span style={{ marginRight: 20 }}>
               {index + 1} {item.title}
             </span>
-            <button onClick={toggleModal}>Edit</button>
+            <button onClick={() => toggleModal(item.id)}>Edit</button>
             <button onClick={() => handleDelete(item.id)}>delete</button>
           </div>
         ))}
