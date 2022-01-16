@@ -1,9 +1,8 @@
-import React, { useContext, useEffect, useState } from 'react';
+import React, { useContext } from 'react';
 import { TriggerFunction } from '../context';
-import { v4 as uuidv4 } from 'uuid';
 
 export default function DisplayTodos() {
-  const { state, count } = useContext(TriggerFunction);
+  const { state } = useContext(TriggerFunction);
   console.log(state);
 
   return (

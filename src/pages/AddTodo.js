@@ -4,7 +4,7 @@ import { TriggerFunction } from '../context';
 
 export default function AddTodo() {
   const [todo, setTodo] = useState('');
-  const { state, setState, setCount } = useContext(TriggerFunction);
+  const { setState, setCount } = useContext(TriggerFunction);
 
   const handleSubmit = (e) => {
     e.preventDefault();
