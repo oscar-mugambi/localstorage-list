@@ -6,6 +6,10 @@ export default function TodoListContext({ children }) {
   const [count, setCount] = useState(0);
   const [state, setState] = useState([]);
 
+  const handleDelete = (e) => {
+    console.log('deleting');
+  };
+
   useEffect(() => {
     console.log('context was rerendered');
     console.log(state.length);
@@ -22,7 +26,7 @@ export default function TodoListContext({ children }) {
   }, []);
 
   return (
-    <TriggerFunction.Provider value={{ count, state, setState, setCount }}>
+    <TriggerFunction.Provider value={{ count, state, setState, setCount, handleDelete }}>
       {children}
     </TriggerFunction.Provider>
   );
