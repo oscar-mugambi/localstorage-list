@@ -21,6 +21,7 @@ export default function TodoListContext({ children }) {
     });
     localStorage.setItem('todos', JSON.stringify(todos));
     setState(todos);
+    setShowModal(!showModal);
   };
 
   useEffect(() => {

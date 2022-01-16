@@ -1,6 +1,7 @@
 import React, { useContext, useState } from 'react';
 import { v4 as uuidv4 } from 'uuid';
 import { TriggerFunction } from '../context';
+import './styles.css';
 
 export default function AddTodo() {
   const [todo, setTodo] = useState('');
@@ -28,10 +29,12 @@ export default function AddTodo() {
       setState(todosArr);
       setCount((prev) => prev + 1);
     }
+
+    setTodo('');
   };
 
   return (
-    <form onSubmit={handleSubmit}>
+    <form className='todo-form-input' onSubmit={handleSubmit}>
       <input
         type='text'
         value={todo}
